@@ -33,7 +33,9 @@ template '/usr/sbin/rebuild-iptables' do
   mode '0755'
   variables(
     lazy {
-      hashbang: ::File.exist?('/usr/bin/ruby') ? '/usr/bin/ruby' : '/opt/chef/embedded/bin/ruby'
+      {
+        :hashbang => ::File.exist?('/usr/bin/ruby') ? '/usr/bin/ruby' : '/opt/chef/embedded/bin/ruby'
+      }
     }
   )
 end
